@@ -2,7 +2,7 @@
 chcp 65001 >nul
 cd /d "%~dp0"
 echo ==========================================
-echo  Nazareno Bets IA 3.4 - Deploy Final
+echo  Nazareno Bets IA 3.5 - Produção Ajustada
 echo ==========================================
 echo.
 where node >nul 2>nul

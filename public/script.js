@@ -1,4 +1,4 @@
-const VERSAO_APP='Web 3.4';
+const VERSAO_APP='Web 3.5';
 const $=s=>document.querySelector(s); const $$=s=>document.querySelectorAll(s);
 const state={football:false,sport:false,tickets:0,games:[],selected:[],lastLiveFetch:null,lastDiagnosis:null,lastLiveAnalysis:null,lastTickets:[]};
 const DEFAULT_LEAGUES=[
@@ -2257,7 +2257,7 @@ window.updateTicketResult=async function(idx){
     const side=document.getElementById('side-status');
     if(side) side.textContent=`Logado: ${u.name} (${u.role==='admin'?'Admin':'Usuário'})`;
     const mode=document.getElementById('online-mode-card');
-    if(mode) mode.textContent='Usuários 3.1';
+    if(mode) mode.textContent='Produção 3.5';
     // Recarrega campos com dados do usuário
     const f=document.getElementById('footballKey');
     const s=document.getElementById('sportKey');
@@ -2575,4 +2575,85 @@ window.updateTicketResult=async function(idx){
     cfg.appendChild(panel);
   }
   setTimeout(addDeployChecklist,1000);
+})();
+
+/* Web 3.5 - Ajustes de Produção: APIs no servidor + checklist automático */
+(function web35ProductionFixes(){
+  async function getServerConfig(){
+    try{
+      const r=await fetch('/api/server/config-status');
+      return await r.json();
+    }catch(e){ return {ok:false,apis:{football:false,sport:false},cloud:false,production:false}; }
+  }
+  function setStatusBox(sel, ok, text){
+    const el=document.querySelector(sel);
+    if(el){
+      el.className='result '+(ok?'':'warn');
+      el.textContent=text;
+    }
+  }
+  async function refreshProductionStatus(){
+    const st=await getServerConfig();
+    state.football=!!st.apis?.football;
+    state.sport=!!st.apis?.sport;
+    if(typeof updateStatus==='function') updateStatus();
+    const apiMain=document.getElementById('api-status-main');
+    if(apiMain) apiMain.textContent=(state.football&&state.sport)?'Prontas':'Pendentes';
+    setStatusBox('#footballStatus', state.football, state.football?'API-Football configurada no servidor.':'API-Football pendente no servidor.');
+    setStatusBox('#sportStatus', state.sport, state.sport?'Sportmonks configurada no servidor.':'Sportmonks pendente no servidor.');
+    const mode=document.getElementById('online-mode-card');
+    if(mode) mode.textContent='Produção 3.5';
+    markDeployChecklist(st);
+    return st;
+  }
+  function markDeployChecklist(st){
+    const labels=[...document.querySelectorAll('.deploy-checklist label')];
+    const map=[
+      !!st.cloud, true, !!st.apis?.football, !!st.apis?.sport,
+      !!st.env?.supabaseUrl, !!st.env?.supabaseKey, !!st.production, false
+    ];
+    labels.forEach((lab,i)=>{
+      const input=lab.querySelector('input');
+      if(input){
+        input.checked=!!map[i];
+        input.disabled=true;
+      }
+      if(map[i]) lab.classList.add('checked-auto');
+    });
+  }
+  async function testApiFromServer(which){
+    const msgSel=which==='football'?'#footballStatus':'#sportStatus';
+    setStatusBox(msgSel,false,'Testando conexão pelo servidor...');
+    try{
+      const r=await fetch('/api/server/test/'+which);
+      const j=await r.json();
+      setStatusBox(msgSel,!!j.ok,j.message|| (j.ok?'Conexão OK.':'Falha no teste.'));
+      await refreshProductionStatus();
+    }catch(e){
+      setStatusBox(msgSel,false,'Erro ao testar pelo servidor: '+e.message);
+    }
+  }
+  setTimeout(()=>{
+    const btns=[...document.querySelectorAll('button')];
+    btns.forEach(btn=>{
+      const txt=(btn.textContent||'').toLowerCase();
+      const card=btn.closest('.card');
+      if(txt.includes('testar conexão') && card){
+        const title=(card.textContent||'').toLowerCase();
+        const clone=btn.cloneNode(true);
+        btn.parentNode.replaceChild(clone,btn);
+        if(title.includes('api-football')){
+          clone.addEventListener('click',()=>testApiFromServer('football'));
+        }else if(title.includes('sportmonks')){
+          clone.addEventListener('click',()=>testApiFromServer('sport'));
+        }
+      }
+    });
+    refreshProductionStatus();
+    setInterval(refreshProductionStatus,30000);
+  },700);
+  setTimeout(()=>{
+    const msg=document.getElementById('loginMsg');
+    if(msg) msg.textContent='Use o administrador configurado para esta instalação.';
+  },500);
 })();

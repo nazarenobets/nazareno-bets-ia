@@ -398,5 +398,46 @@ app.get('/api/production/status',(req,res)=>{
   });
 });
 
+
+// Web 3.5 - status real do servidor e testes das APIs configuradas no Render
+app.get('/api/server/config-status',(req,res)=>{
+  res.json({
+    ok:true,
+    production:process.env.NODE_ENV==='production' || !!process.env.RENDER || !!process.env.RAILWAY_ENVIRONMENT,
+    env:{
+      supabaseUrl:!!process.env.SUPABASE_URL,
+      supabaseKey:!!process.env.SUPABASE_SERVICE_ROLE_KEY,
+      appDomain:process.env.APP_DOMAIN || ''
+    },
+    cloud:!!(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY),
+    apis:{
+      football:!!process.env.API_FOOTBALL_KEY,
+      sport:!!process.env.SPORTMONKS_TOKEN
+    },
+    version:'3.5'
+  });
+});
+app.get('/api/server/test/football',async(req,res)=>{
+  try{
+    const k=process.env.API_FOOTBALL_KEY||'';
+    if(!k || k==='colocar_depois') return res.status(400).json({ok:false,message:'API-Football não configurada no servidor.'});
+    const r=await fetch('https://v3.football.api-sports.io/status',{headers:{'x-apisports-key':k}});
+    const j=await r.json();
+    if(!r.ok || j.errors?.token) return res.status(400).json({ok:false,message:'API-Football respondeu erro. Confira a chave no Render.'});
+    res.json({ok:true,message:'API-Football pronta no servidor.'});
+  }catch(e){ res.status(500).json({ok:false,message:'Erro ao testar API-Football: '+e.message}); }
+});
+app.get('/api/server/test/sport',async(req,res)=>{
+  try{
+    const k=process.env.SPORTMONKS_TOKEN||'';
+    if(!k || k==='colocar_depois') return res.status(400).json({ok:false,message:'Sportmonks não configurada no servidor.'});
+    const r=await fetch('https://api.sportmonks.com/v3/football/fixtures?per_page=1',{headers:{Authorization:`Bearer ${k}`}});
+    const j=await r.json();
+    const ok=r.ok && !String(j.message||'').toLowerCase().includes('unauthenticated');
+    if(!ok) return res.status(400).json({ok:false,message:'Sportmonks respondeu erro. Confira o token no Render.'});
+    res.json({ok:true,message:'Sportmonks pronta no servidor.'});
+  }catch(e){ res.status(500).json({ok:false,message:'Erro ao testar Sportmonks: '+e.message}); }
+});
+
 app.get('*',(req,res)=>res.sendFile(path.join(__dirname,'../public/index.html')));
-app.listen(process.env.PORT||3026,()=>console.log('Nazareno Bets IA 3.4 rodando em http://localhost:3026'));
+app.listen(process.env.PORT||3026,()=>console.log('Nazareno Bets IA 3.5 rodando em http://localhost:3026'));

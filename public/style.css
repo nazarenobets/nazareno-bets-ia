@@ -163,3 +163,7 @@
 .deploy-checklist label{background:#071d32;border:1px solid #24557e;border-radius:12px;padding:10px;color:#dbeafe;font-weight:700}
 .deploy-checklist input{margin-right:8px}
 @media(max-width:900px){.deploy-checklist{grid-template-columns:1fr}}
+
+/* Web 3.5 */
+.deploy-checklist label.checked-auto{border-color:#2ee0a4;background:#08251e}
+.deploy-checklist label.checked-auto::after{content:' ✅';float:right}
