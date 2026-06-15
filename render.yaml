@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: nazareno-bets-ia
+    env: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: APP_DOMAIN
+        value: nazarenobets.com
+      - key: API_FOOTBALL_KEY
+        sync: false
+      - key: SPORTMONKS_TOKEN
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: ADMIN_USER
+        value: admin
+      - key: ADMIN_PASS
+        sync: false

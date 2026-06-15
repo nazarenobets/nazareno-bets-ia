@@ -1,0 +1,10 @@
+Copie e preencha no Render/Railway:
+
+NODE_ENV=production
+APP_DOMAIN=nazarenobets.com
+API_FOOTBALL_KEY=
+SPORTMONKS_TOKEN=
+SUPABASE_URL=
+SUPABASE_SERVICE_ROLE_KEY=
+ADMIN_USER=admin
+ADMIN_PASS=
