@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Nazareno Bets IA Web 3.4</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="loginOverlay" class="login-overlay">
+  <div class="login-card">
+    <div class="login-logo">NB</div>
+    <h1>Nazareno Bets IA</h1>
+    <p>Plataforma Online 3.0</p>
+    <label>Usuário</label>
+    <input id="loginUser" placeholder="admin">
+    <label>Senha</label>
+    <input id="loginPass" type="password" placeholder="admin123">
+    <button id="loginBtn" class="primary">Entrar</button>
+    <div id="loginMsg" class="result warn">Usuário inicial: admin | Senha: admin123</div>
+  </div>
+</div>
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><div class="logo">NB</div><div><strong>Nazareno Bets</strong><span>IA Profissional <span class="version-badge">WEB 3.4</span></span></div></div>
+    <button class="nav active" data-page="dashboard">🏠 Dashboard</button>
+    <button class="nav" data-page="jogos">⚽ Buscar Jogos</button>
+    <button class="nav" data-page="diagnostico">📊 Diagnóstico IA</button>
+    <button class="nav" data-page="bilhetes">🎯 Gerar Bilhetes</button>
+    <button class="nav" data-page="historico">📚 Histórico</button>
+    <button class="nav" data-page="usuarios">👥 Usuários</button>
+    <button class="nav" data-page="config">⚙️ Configurações</button>
+    <div class="side-card"><small>Casa principal</small><b>Bet365 <span id="bet-dot" class="dot warn"></span></b><p id="side-status">Configure as APIs</p></div>
+  </aside>
+  <main class="main">
+    <header class="top"><div><span>NAZARENOBETS.COM</span><h1 id="page-title">Dashboard</h1></div><div class="badges"><b id="badge-football" class="badge warn">API-Football pendente</b><b id="badge-sport" class="badge warn">Sportmonks pendente</b></div></header>
+
+    <section id="dashboard" class="page active">
+      <div class="cards">
+        <div class="card stat"><span class="ball live"></span><small>Jogos ao vivo</small><strong id="live-count">0</strong></div>
+        <div class="card stat"><span>🎫</span><small>Bilhetes gerados</small><strong id="tickets-count">0</strong></div>
+        <div class="card stat"><span>📈</span><small>Aproveitamento</small><strong>--%</strong></div>
+        <div class="card stat"><span class="ball ok"></span><small>Status das APIs</small><strong id="api-status-main">Pendentes</strong></div>
+        <div class="card stat"><span>💰</span><small>Saldo da banca</small><strong id="bank-current-card">R$ 0,00</strong></div>
+        <div class="card stat"><span>🌐</span><small>Modo plataforma</small><strong id="online-mode-card">Local / Online Ready</strong></div>
+      </div>
+      <div class="hero card">
+        <div><h2>Central inteligente para jogos, diagnóstico e bilhetes</h2><p>Plataforma com busca real, diagnóstico pré-jogo, Live Trader IA e bilhete ao vivo objetivo, com mercados claros e leitura da IA separada.</p><button class="primary" data-go="config">Configurar APIs agora</button></div>
+        <div class="features"><div>🔐 Chaves salvas localmente</div><div>🧪 Teste de conexão</div><div>🏆 Filtro por competição</div><div>🔴 Live Trader IA</div><div>⏱ Atualização ao vivo a cada 10s</div><div>🕒 Tempo estimado sem retroceder</div><div>📈 Confiança + riscos da entrada</div><div>🧠 IA aprende com histórico</div><div>💰 Controle de banca</div><div>✏️ Odd real + aposta real</div><div>🎫 Bilhete resumido</div><div>🌐 Plataforma online</div><div>👥 Usuários reais</div><div>💾 Banco online Supabase</div><div>🚀 Produção online</div><div>🌐 Deploy final</div><div>🎯 Bilhetes pré/live separados</div><div>🎫 Bilhete objetivo</div></div>
+      </div>
+    </section>
+
+
+    <section id="usuarios" class="page">
+      <div class="card">
+        <h2>👥 Usuários da Plataforma</h2>
+        <p class="muted">O Administrador pode criar usuários. Cada usuário terá banca, histórico e configurações separados no banco local preparado para migrar ao online.</p>
+
+        <div class="user-form-grid">
+          <label>Nome <input id="newUserName" placeholder="Nome do usuário"></label>
+          <label>E-mail / Login <input id="newUserEmail" placeholder="email@exemplo.com"></label>
+          <label>Senha <input id="newUserPass" type="password" placeholder="Senha"></label>
+          <label>Perfil
+            <select id="newUserRole">
+              <option value="admin">👑 Administrador</option>
+              <option value="user" selected>👤 Usuário</option>
+            </select>
+          </label>
+          <label>Status
+            <select id="newUserStatus">
+              <option value="active" selected>🟢 Ativo</option>
+              <option value="blocked">🔴 Bloqueado</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button class="primary" id="createUserBtn">Criar usuário</button>
+          <button class="secondary" id="refreshUsersBtn">Atualizar lista</button>
+        </div>
+        <div id="usersMsg" class="result warn">Usuário inicial: admin / admin123.</div>
+      </div>
+
+      <div id="usersList" class="users-list"></div>
+    </section>
+
+    <section id="config" class="page">
+      <div class="grid2">
+        <div class="card config-card"><h2>🔑 API-Football</h2><p>Usada para jogos, placar ao vivo, estatísticas, classificação e últimos jogos.</p><label>Chave API-Football</label><div class="input-row"><input id="footballKey" type="password" placeholder="Cole sua chave API-Football"/><button class="secondary" id="toggleFootball">Ver</button></div><div class="actions"><button class="primary" id="saveFootball">Salvar</button><button class="secondary" id="testFootball">Testar conexão</button></div><div id="footballResult" class="result warn">Pendente</div></div>
+        <div class="card config-card"><h2>🔑 Sportmonks</h2><p>Usada para complementar mercados, odds, dados extras e apoio à Bet365.</p><label>Token Sportmonks</label><div class="input-row"><input id="sportKey" type="password" placeholder="Cole seu token Sportmonks"/><button class="secondary" id="toggleSport">Ver</button></div><div class="actions"><button class="primary" id="saveSport">Salvar</button><button class="secondary" id="testSport">Testar conexão</button></div><div id="sportResult" class="result warn">Pendente</div></div>
+      </div>
+      <div class="card note"><h3>Importante sobre segurança</h3><p>Nesta fase local, as chaves ficam no seu navegador. Na versão publicada em nazarenobets.com, o correto é guardar as chaves no servidor (.env), sem aparecer no código do site.</p></div>
+
+        <div id="bankConfigPanel" class="card config-card">
+          <h2>💰 Configuração da Gestão de Banca</h2>
+          <p>Configure uma vez. Depois a plataforma sugere o valor de entrada em cada bilhete.</p>
+
+          <label>Banca inicial</label>
+          <input id="cfgBankInitial" type="number" min="0" step="0.01" placeholder="Ex.: 500">
+
+          <label>Saldo atual</label>
+          <input id="cfgBankCurrent" type="number" min="0" step="0.01" placeholder="Ex.: 500">
+
+          <label>Modelo de gestão</label>
+          <select id="cfgBankMode">
+            <option value="1">🟢 Proteção — 1% da banca</option>
+            <option value="2" selected>🟡 Normal — 2% da banca</option>
+            <option value="5">🔴 Crescimento — 5% da banca</option>
+          </select>
+
+          <div class="actions">
+            <button class="primary" id="saveBankConfig">Salvar gestão</button>
+          </div>
+          <div id="bankConfigMsg" class="result warn">Gestão de banca ainda não configurada.</div>
+        </div>
+    
+    
+        <div id="deployConfigPanel" class="card config-card">
+          <h2>🌐 Publicação Online</h2>
+          <p>Esta versão já está preparada para virar site em servidor. Em produção, as chaves devem ficar no servidor, não no navegador.</p>
+          <div class="deploy-list">
+            <div>✅ Front-end pronto</div>
+            <div>✅ Servidor Node/Express</div>
+            <div>✅ Banco online Supabase preparado</div>
+            <div>✅ Login inicial</div>
+            <div>✅ Variáveis de ambiente</div>
+            <div>🚀 Domínio pronto: nazarenobets.com</div>
+          </div>
+          <div class="result warn">Pacote final pronto para Render/Railway, Supabase e domínio nazarenobets.com.</div>
+        </div>
+    
+    </section>
+
+    <section id="jogos" class="page">
+      <div class="card"><h2>⚽ Buscar Jogos</h2><div class="filters"><label>Competição<select id="league"><option value="all">Todas as competições</option></select></label><label>Tipo<select id="matchType"><option value="pre">Pré-jogo</option><option value="live">Ao vivo</option></select></label><label>Data<input type="date" id="gameDate"></label><label>Casa<select><option>Bet365</option></select></label><button class="secondary" id="loadLeagues">Carregar campeonatos</button><button class="primary" id="searchGames">Buscar jogos</button><button class="secondary" id="refreshLive">Atualizar ao vivo</button></div><p class="muted" id="gamesMsg">Ao vivo respeita o campeonato selecionado. Ex.: selecionou Brasileirão + Ao vivo, aparece somente Brasileirão ao vivo.</p><p class="muted">Jogos selecionados: <b id="selected-count">0</b></p><div id="gamesList" class="table empty">Nenhum jogo carregado ainda.</div></div>
+    </section>
+
+    <section id="diagnostico" class="page">
+      <div class="card">
+        <h2>📊 Diagnóstico IA dos Confrontos</h2>
+        <p class="muted">Selecione um ou mais jogos em Buscar Jogos. Primeiro escolha o modo da análise para não misturar pré-jogo com ao vivo.</p>
+
+        <div class="mode-box">
+          <label class="mode-option active" data-diag-mode="pre">
+            <input type="radio" name="diagMode" value="pre" checked>
+            <span>⚪ Pré-jogo / Confronto</span>
+            <small>Usa histórico, médias, casa/fora, últimos jogos e perfil dos times.</small>
+          </label>
+          <label class="mode-option" data-diag-mode="live">
+            <input type="radio" name="diagMode" value="live">
+            <span>🔴 Ao vivo / Live Trader</span>
+            <small>Usa placar, minuto, pressão, escanteios, cartões e estatísticas do momento.</small>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button class="primary" id="runSelectedDiagnosis">Analisar modo selecionado</button>
+          <button class="secondary" id="runDiagnosis">Analisar pré-jogo/confronto</button>
+          <button class="danger" id="runLiveAnalysis">🔴 Analisar ao vivo</button>
+          <button class="secondary" data-go="jogos">Voltar para selecionar jogos</button>
+        </div>
+        <div id="diagMsg" class="result warn">Escolha o modo de análise e selecione os jogos correspondentes.</div>
+      </div>
+      <div id="diagOutput" class="diag-grid"></div>
+      <div id="liveOutput" class="diag-grid"></div>
+    </section>
+    <section id="bilhetes" class="page">
+      <div class="card">
+        <h2>🎯 Gerador Inteligente de Bilhetes</h2>
+        <p class="muted">O gerador separa pré-jogo e ao vivo, permite escolher quantos bilhetes e quantos jogos entram em cada bilhete. Nesta versão, tenta puxar odds reais da Bet365 pelo fornecedor de odds disponível.</p>
+        <div class="ticket-controls">
+          <label>Modo de análise
+            <select id="ticketMode">
+              <option value="pre">⚪ Pré-jogo</option>
+              <option value="live">🔴 Ao vivo</option>
+            </select>
+          </label>
+          <label>Perfil
+            <select id="ticketProfile">
+              <option value="conservador">🟢 Conservador</option>
+              <option value="medio">🟡 Médio</option>
+              <option value="agressivo">🔴 Agressivo</option>
+            </select>
+          </label>
+          <label>Quantidade de bilhetes
+            <input id="ticketQty" type="number" min="1" max="5" value="3" />
+          </label>
+          <label>Jogos por bilhete
+            <input id="ticketGamesPerSlip" type="number" min="1" max="10" value="3" />
+          </label>
+          <label>Valor disponível / banca do bilhete
+            <input id="ticketBank" type="number" min="0" step="1" placeholder="Ex.: 30" />
+          </label>
+        </div>
+        <div class="actions">
+          <button class="danger" id="startLiveMonitor">🔴 Ativar monitor ao vivo</button>
+          <button class="primary" id="generateTickets">Gerar bilhetes IA</button>
+          <button class="secondary" id="saveTickets">Salvar no histórico</button>
+          <button class="secondary hidden" id="newBetSearch">🔄 Novo Bilhete / Nova Busca</button>
+          <button class="secondary" data-go="diagnostico">Voltar ao diagnóstico</button>
+        </div>
+        <div id="liveMonitorBox" class="result warn">Monitor ao vivo desligado. Para bilhete ao vivo, selecione um jogo em andamento e ative o monitor.</div>
+        <div id="ticketMsg" class="result warn">Selecione um jogo, gere o diagnóstico correspondente e depois forme os bilhetes.</div>
+      </div>
+      <div id="bankPanel" class="card bank-panel">
+          <h2>💰 Controle de Banca</h2>
+          <div class="bank-grid">
+            <label>Banca inicial <input id="bankInitial" type="number" min="0" step="0.01" placeholder="Ex.: 500"></label>
+            <label>Saldo atual <input id="bankCurrent" type="number" min="0" step="0.01" placeholder="Ex.: 500"></label>
+            <label>Gestão da banca <select id="bankRiskPct"><option value="1">🟢 Proteção — 1%</option><option value="2" selected>🟡 Normal — 2%</option><option value="5">🔴 Crescimento — 5%</option></select></label>
+          </div>
+          <div class="actions">
+            <button class="primary" id="saveBank">Salvar banca</button>
+            <button class="secondary" id="suggestStake">Sugerir valor de entrada</button>
+          </div>
+          <div id="bankMsg" class="result warn">Configure sua banca para acompanhar lucro/prejuízo.</div>
+          <div id="bankSummary" class="bank-summary"></div>
+        </div>
+        <div id="ticketOutput" class="ticket-grid"></div>
+    </section>
+    <section id="historico" class="page">
+      <div class="card"><h2>📚 Histórico</h2><p class="muted">Bilhetes salvos nesta fase ficam no navegador. Na plataforma online, vão para banco de dados.</p><div class="actions"><button class="secondary" id="refreshHistory">Atualizar histórico</button><button class="secondary" id="clearHistory">Limpar histórico local</button></div></div>
+      <div id="historyList" class="history-list"></div>
+    </section>
+  </main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+:root{--bg:#061426;--panel:#0b1d33;--panel2:#102944;--line:#244b72;--text:#f6fbff;--muted:#a8c7e7;--green:#2ee0a1;--yellow:#ffd36b;--red:#ee456a;--blue:#4aa3ff}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}.app{display:flex;min-height:100vh}.sidebar{width:272px;background:#071526;border-right:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:14px}.brand{display:flex;gap:12px;align-items:center;margin-bottom:14px}.logo{width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,#38dcc6,#4aa3ff);display:grid;place-items:center;font-weight:900;color:#001a22}.brand strong{font-size:20px;display:block}.brand span{color:var(--muted)}.nav{border:0;color:var(--text);background:transparent;text-align:left;padding:14px 16px;border-radius:13px;font-weight:700;cursor:pointer}.nav:hover,.nav.active{background:#112a46;outline:1px solid #28557e}.side-card{margin-top:auto;background:#0c2138;border:1px solid var(--line);border-radius:16px;padding:16px}.side-card small{color:var(--muted)}.side-card p{margin:10px 0 0;font-weight:700}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--green)}.dot.warn{background:var(--yellow)}.main{flex:1;padding:24px 28px}.top{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:30px}.top span{letter-spacing:2px;color:var(--muted);font-size:13px}.top h1{font-size:34px;margin:8px 0}.badges{display:flex;gap:10px;flex-wrap:wrap}.badge{padding:12px 16px;border-radius:999px;background:#12375c;color:var(--green);font-size:14px}.badge.warn{background:#354a39;color:var(--yellow)}.page{display:none}.page.active{display:block}.cards{display:grid;grid-template-columns:repeat(4,minmax(180px,1fr));gap:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 12px 35px rgba(0,0,0,.18)}.stat{display:grid;grid-template-columns:auto 1fr;gap:10px 22px;align-items:center}.stat span:first-child{font-size:28px;grid-row:span 2}.stat small{color:#b7d8ff}.stat strong{font-size:30px}.ball{width:28px;height:28px;border-radius:50%;display:inline-block;background:radial-gradient(circle at 30% 25%,#8fffd3,var(--green) 45%,#1f785d)}.ball.live{background:radial-gradient(circle at 30% 25%,#ff85a2,var(--red) 55%,#7a1831)}.ball.ok{background:radial-gradient(circle at 30% 25%,#a0ffc8,var(--green) 55%,#12533e)}.hero{margin-top:18px;display:grid;grid-template-columns:1.5fr .9fr;gap:28px;align-items:center}.hero h2{font-size:30px;line-height:1.25}.hero p,.muted{color:var(--muted);line-height:1.45}.primary,.secondary{border:0;border-radius:13px;padding:13px 18px;font-weight:900;cursor:pointer}.primary{background:var(--green);color:#04151b}.secondary{background:#142e4d;color:var(--text);border:1px solid #2a567f}.features{display:grid;gap:12px}.features div{background:#0a1b2f;border:1px solid var(--line);border-radius:15px;padding:16px}.grid2{display:grid;grid-template-columns:repeat(2,minmax(280px,1fr));gap:18px}.config-card h2{margin-top:0}.config-card label{display:block;margin:16px 0 8px;color:#cce3fb;font-weight:700}.input-row{display:flex;gap:8px}.input-row input{flex:1}.config-card input,.filters select,.filters input{background:#061426;border:1px solid #2a567f;color:var(--text);border-radius:12px;padding:13px;width:100%}.actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}.result{margin-top:15px;border-radius:12px;padding:13px;font-weight:900;background:#0d372b;color:var(--green);border:1px solid #1e7b5f}.result.warn{background:#3b3314;color:var(--yellow);border-color:#826b1d}.result.bad{background:#3b1420;color:#ff8da5;border-color:#8b2e45}.note{margin-top:18px}.filters{display:grid;grid-template-columns:1.2fr 1fr 1fr auto auto;gap:12px;align-items:end}.filters label{color:#cce3fb;font-weight:700}.filters select{margin-top:8px}.table{margin-top:18px;border:1px solid var(--line);border-radius:14px;overflow:hidden}.empty{padding:18px;color:var(--muted)}.game-row{display:grid;grid-template-columns:45px 1fr 1fr 130px 90px;gap:12px;padding:14px;border-bottom:1px solid #18385a;align-items:center}.game-row:last-child{border-bottom:0}@media(max-width:950px){.app{display:block}.sidebar{width:100%;min-height:auto}.cards,.grid2,.hero{grid-template-columns:1fr}.filters{grid-template-columns:1fr}.top{display:block}}
+
+.version-badge{font-size:11px;background:#213b68;color:#7ee3ff;border:1px solid #34669a;border-radius:999px;padding:3px 7px;margin-left:8px;vertical-align:middle}
+.diag-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}.diag-grid .wide{grid-column:1/-1}.diag-card h3{margin-top:0}.pillline{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}.pillline span{background:#123257;border:1px solid #245181;padding:8px 10px;border-radius:12px;color:#cbe7ff}.metrics{display:grid;grid-template-columns:repeat(4,minmax(120px,1fr));gap:10px}.metrics div{background:#071a2d;border:1px solid #1f4773;border-radius:12px;padding:10px}.metrics small{display:block;color:#8fc3f4}.metrics b{font-size:20px}.rec-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.rec{padding:10px 12px;border-radius:12px;border:1px solid #244b72;background:#081c31}.rec.ok{border-color:#1c7e68;background:#07291f}.rec.bad{border-color:#81324a;background:#2b0d18}@media(max-width:900px){.diag-grid,.rec-grid{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}.diag-grid .wide{grid-column:auto}}
+
+
+/* Web 1.9 - Live Trader IA */
+.danger{background:linear-gradient(135deg,#ef4444,#b91c1c);color:#fff;border:0;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer;box-shadow:0 10px 25px rgba(239,68,68,.22)}
+.live-panel{border:1px solid rgba(239,68,68,.35);background:linear-gradient(180deg,rgba(239,68,68,.12),rgba(15,23,42,.94))}
+.score-big{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px;border-radius:18px;background:rgba(15,23,42,.72);border:1px solid rgba(148,163,184,.16);margin:14px 0}
+.score-big b{font-size:26px}.score-big .team{flex:1}.score-big .team:last-child{text-align:right}.score-big .clock{font-size:18px;color:#f87171;font-weight:900}
+.pressure-high{color:#22c55e}.pressure-mid{color:#f59e0b}.pressure-low{color:#ef4444}
+.live-report{font-size:16px;line-height:1.65;background:rgba(34,197,94,.08);border-left:4px solid #22c55e;padding:16px;border-radius:14px;color:#e5e7eb}
+.market-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.market-card{background:rgba(2,6,23,.55);border:1px solid rgba(148,163,184,.16);border-radius:14px;padding:12px}.market-card b{display:block;margin-bottom:5px}.alert-box{border:1px solid rgba(245,158,11,.35);background:rgba(245,158,11,.09);padding:14px;border-radius:14px;color:#fde68a}
+
+
+/* Web 2.1 - Gerador de Bilhetes */
+.ticket-controls{display:grid;grid-template-columns:repeat(4,minmax(170px,1fr));gap:12px;margin-top:14px}.ticket-controls label{font-weight:800;color:#cce3fb}.ticket-controls select,.ticket-controls input{margin-top:8px;background:#061426;border:1px solid #2a567f;color:var(--text);border-radius:12px;padding:13px;width:100%}.ticket-grid,.history-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:16px;margin-top:18px}.ticket-card{border-color:#2ee0a155}.ticket-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.ticket-head h3{margin-top:0}.ticket-mode,.ticket-status{padding:8px 10px;border-radius:999px;background:#12375c;color:var(--green);font-weight:900;font-size:12px;white-space:nowrap}.ticket-mode.live{background:#3b1420;color:#ff8da5}.ticket-card ol,.history-card ol{padding-left:20px}.ticket-card li{margin:12px 0}.ticket-card li small{display:block;color:var(--muted);margin-top:4px}.ticket-report{margin:12px 0;background:#071a2d;border:1px solid #244b72;border-radius:14px;padding:12px;color:#dff3ff;line-height:1.45}.history-card{border-color:#244b72}@media(max-width:900px){.ticket-controls{grid-template-columns:1fr}.ticket-grid,.history-list{grid-template-columns:1fr}}
+.ticket-invalid{border:1px solid rgba(239,68,68,.85)!important; box-shadow:0 0 0 2px rgba(239,68,68,.15)!important; position:relative;}
+.ticket-invalid:before{content:'CENÁRIO ALTERADO — GERE NOVAMENTE';display:block;background:rgba(239,68,68,.18);color:#fecaca;border:1px solid rgba(239,68,68,.35);border-radius:12px;padding:8px 10px;margin-bottom:10px;font-weight:800;}
+
+/* Web 2.2 - bilhete objetivo */
+.objective-ticket .score-line{font-weight:800;font-size:1.05rem;margin:12px 0 14px;color:#fff;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.objective-ticket .score-line span{font-size:.9rem;color:#93c5fd;border:1px solid #24527a;border-radius:999px;padding:4px 10px;background:#071b30}
+.ticket-section-title{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:#93c5fd;margin:10px 0 8px;font-weight:800}
+.objective-list{display:flex;flex-direction:column;gap:10px;padding-left:0;list-style:none;margin:0 0 14px}
+.objective-list li{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:12px;border:1px solid #1d4268;background:#071b30;border-radius:14px}
+.objective-list li b{display:block;color:#fff;margin-bottom:5px}
+.objective-list li small{display:block;color:#9cc7f7;line-height:1.35}
+.confidence{white-space:nowrap;border-radius:999px;padding:5px 9px;font-weight:900;font-size:.78rem}
+.conf-high{background:#063d2f;color:#38f8a6;border:1px solid #0e7b58}.conf-mid{background:#3b3109;color:#ffd86b;border:1px solid #80651a}.conf-low{background:#411020;color:#ff6b8b;border:1px solid #7d1834}
+.ticket-report.separated{margin-top:14px;line-height:1.55;background:#06192d;border-color:#24527a}
+
+/* Web 2.4 - fluxo novo bilhete */
+.hidden{display:none!important}
+.flow-success{background:#062f25!important;border-color:#158060!important;color:#54f0b3!important}
+.reset-note{border:1px solid rgba(46,224,161,.35);background:rgba(46,224,161,.08);color:#d9fff2;padding:12px;border-radius:14px;margin-top:12px;font-weight:800}
+
+/* Web 2.5 - Histórico profissional */
+.pro-history{border-left:4px solid rgba(34,197,94,.65)}
+.history-meta{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 10px}
+.history-meta span{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:6px 10px;font-size:12px;color:#cbd5e1}
+.ticket-status{border-radius:999px;padding:6px 10px;font-size:12px;font-weight:800;background:rgba(148,163,184,.15);color:#cbd5e1}
+.ticket-status.won{background:rgba(34,197,94,.17);color:#86efac;border:1px solid rgba(34,197,94,.35)}
+.ticket-status.lost{background:rgba(239,68,68,.17);color:#fca5a5;border:1px solid rgba(239,68,68,.35)}
+.ticket-status.running{background:rgba(245,158,11,.16);color:#fcd34d;border:1px solid rgba(245,158,11,.35)}
+.ticket-status.manual{background:rgba(59,130,246,.16);color:#93c5fd;border:1px solid rgba(59,130,246,.35)}
+.history-markets li{margin:8px 0;padding:10px;border-radius:12px;background:rgba(15,23,42,.55);border:1px solid rgba(255,255,255,.06)}
+.history-markets small,.result-details small{display:block;color:#94a3b8;margin-top:4px}
+.result-details{margin-top:12px;padding:12px;border-radius:14px;background:rgba(2,6,23,.35);border:1px solid rgba(255,255,255,.08)}
+.result-details ol{margin:8px 0 0 18px;padding:0}
+.result-details li{margin:8px 0}
+
+.odds-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0;padding:12px;border-radius:14px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.18)}
+.odds-summary div{display:flex;flex-direction:column;gap:4px}.odds-summary small{color:#9ca3af}.odds-summary b{font-size:18px;color:#d1fae5}.odd-line{display:block;margin-top:6px;color:#a7f3d0}.odd-line.warn{color:#fcd34d}
+
+/* Web 2.6.1 - Modo explícito do diagnóstico */
+.mode-box{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}
+.mode-option{display:block;border:1px solid #27527a;border-radius:16px;background:#0b2036;padding:16px;cursor:pointer;transition:.2s}
+.mode-option input{margin-right:8px}
+.mode-option span{display:block;font-weight:800;font-size:16px;margin-bottom:6px}
+.mode-option small{display:block;color:#a9c7e8;line-height:1.35}
+.mode-option.active{border-color:#2ee0a4;box-shadow:0 0 0 2px rgba(46,224,164,.15);background:#0e2a42}
+@media(max-width:900px){.mode-box{grid-template-columns:1fr}}
+
+/* Web 2.6.3 - monitor live real */
+#liveRealStatus{margin-top:14px}
+.ticket-invalid{border-color:#ef4444 !important; box-shadow:0 0 0 2px rgba(239,68,68,.18)}
+
+/* Web 2.6.4 - aviso de defasagem */
+#globalLiveWarning{margin-top:14px}
+[data-live-fixture]{font-weight:800}
+
+/* Web 2.7 - confiança */
+.confidence-panel{border:1px solid #24557e;background:#071d32;border-radius:16px;padding:14px;margin:14px 0}
+.confidence-head{display:flex;justify-content:space-between;gap:12px;align-items:center;font-weight:900;margin-bottom:10px}
+.conf-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.conf-grid h4{margin:4px 0 8px}
+.conf-grid ul{margin:0;padding-left:20px;color:#cfe7ff}
+.conf-high{color:#2ee0a4!important}
+.conf-mid{color:#ffd166!important}
+.conf-low{color:#ff5c7a!important}
+.entry-confidence-extra{width:100%;margin-top:6px}
+.history-confidence{background:#071d32;border:1px solid #24557e;border-radius:12px;padding:8px 10px;margin:8px 0;color:#cfe7ff}
+@media(max-width:900px){.conf-grid{grid-template-columns:1fr}}
+
+/* Web 2.8 - IA aprendendo com histórico */
+.learning-dashboard{margin-top:18px}
+.learning-stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:14px 0}
+.learning-stats div{background:#071d32;border:1px solid #24557e;border-radius:14px;padding:12px}
+.learning-stats small{display:block;color:#9dbad8;margin-bottom:4px}
+.learning-stats b{font-size:22px}
+.learning-panel{border:1px solid #3b5b21;background:#10230d;border-radius:16px;padding:14px;margin:14px 0;color:#dfffd8}
+.learning-panel ul{margin:8px 0 0;padding-left:20px}
+.market-learning-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.market-learning-item{background:#071d32;border:1px solid #24557e;border-radius:14px;padding:12px;display:grid;grid-template-columns:1fr auto;gap:4px}
+.market-learning-item span{font-weight:900;color:#2ee0a4}
+.market-learning-item small{grid-column:1 / -1;color:#a9c7e8}
+@media(max-width:900px){.learning-stats,.market-learning-list{grid-template-columns:1fr}}
+
+/* Web 2.9 - Controle de banca */
+.bank-panel{margin:18px 0}
+.bank-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:12px 0}
+.bank-grid label{display:flex;flex-direction:column;gap:6px;color:#cfe7ff;font-weight:700}
+.bank-grid input{background:#071d32;border:1px solid #24557e;color:#fff;border-radius:12px;padding:10px}
+.bank-summary{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:14px}
+.bank-summary div{background:#071d32;border:1px solid #24557e;border-radius:14px;padding:12px}
+.bank-summary small{display:block;color:#9dbad8;margin-bottom:4px}
+.bank-summary b{font-size:18px}
+.bank-ticket-info{background:#071d32;border:1px solid #24557e;border-radius:12px;padding:8px 10px;margin:8px 0;color:#cfe7ff}
+.bank-dashboard{margin-top:18px}
+@media(max-width:900px){.bank-grid,.bank-summary{grid-template-columns:1fr}}
+
+/* Web 2.9.1 - Odd manual e aposta real */
+.bank-grid select{background:#071d32;border:1px solid #24557e;color:#fff;border-radius:12px;padding:10px}
+.manual-bet-panel{border:1px solid #2ee0a4;background:#08251e;border-radius:16px;padding:14px;margin:14px 0}
+.manual-bet-panel h4{margin:0 0 10px}
+.manual-bet-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.manual-bet-grid label{display:flex;flex-direction:column;gap:6px;color:#cfe7ff;font-weight:700}
+.manual-bet-grid input{background:#071d32;border:1px solid #24557e;color:#fff;border-radius:12px;padding:10px}
+.manual-calc{margin-top:12px;color:#cfe7ff}
+.risk-alert{display:inline-block;margin-left:8px;color:#ffd166;font-weight:800}
+.manual-history-info{background:#08251e;border:1px solid #2ee0a4;border-radius:12px;padding:8px 10px;margin:8px 0;color:#dfffd8}
+@media(max-width:900px){.manual-bet-grid{grid-template-columns:1fr}}
+
+/* Web 2.9.2 - configuração banca e bilhete resumido */
+#bankConfigPanel input,#bankConfigPanel select{background:#071d32;border:1px solid #24557e;color:#fff;border-radius:12px;padding:10px;width:100%;margin:6px 0 12px}
+.compact-ticket{padding:16px}
+.compact-game{background:#071d32;border:1px solid #24557e;border-radius:12px;padding:10px;margin:10px 0;color:#dbeafe;font-weight:800}
+.compact-confidence{display:flex;justify-content:space-between;align-items:center;background:#08251e;border:1px solid #2ee0a4;border-radius:12px;padding:10px;margin:10px 0}
+.compact-confidence small{color:#a9c7e8}
+.compact-confidence b{color:#2ee0a4}
+.compact-entries{display:grid;gap:8px;margin:10px 0}
+.compact-entry{display:flex;justify-content:space-between;gap:10px;background:#06182a;border:1px solid #1d4064;border-radius:10px;padding:9px}
+.compact-entry span{color:#ffd166;font-weight:800;white-space:nowrap}
+.compact-manual{margin-top:10px}
+.compact-report{background:#071d32;border:1px solid #24557e;border-radius:12px;padding:10px;margin-top:10px;color:#cfe7ff;line-height:1.4}
+
+/* Web 3.0 - Login e plataforma online */
+.login-overlay{position:fixed;inset:0;background:radial-gradient(circle at top,#123b5c,#020617 70%);display:none;align-items:center;justify-content:center;z-index:9999;padding:20px}
+.login-card{width:min(420px,100%);background:#071d32;border:1px solid #24557e;border-radius:24px;padding:28px;box-shadow:0 20px 80px rgba(0,0,0,.45)}
+.login-logo{width:64px;height:64px;border-radius:18px;background:#2ee0a4;color:#04111f;display:grid;place-items:center;font-weight:900;font-size:24px;margin:0 auto 16px}
+.login-card h1{text-align:center;margin:0;color:#fff}
+.login-card p{text-align:center;color:#a9c7e8;margin:8px 0 20px}
+.login-card label{display:block;color:#cfe7ff;font-weight:800;margin:12px 0 6px}
+.login-card input{width:100%;box-sizing:border-box;background:#06182a;border:1px solid #24557e;border-radius:12px;color:#fff;padding:12px}
+.login-card button{width:100%;margin-top:16px}
+.deploy-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}
+.deploy-list div{background:#071d32;border:1px solid #24557e;border-radius:12px;padding:10px;color:#dbeafe}
+@media(max-width:900px){.deploy-list{grid-template-columns:1fr}}
+
+/* Web 3.1 - usuários */
+.user-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0}
+.user-form-grid label{display:flex;flex-direction:column;gap:6px;color:#cfe7ff;font-weight:800}
+.user-form-grid input,.user-form-grid select{background:#071d32;border:1px solid #24557e;color:#fff;border-radius:12px;padding:10px}
+.users-list{display:grid;gap:12px;margin-top:16px}
+.user-card{display:flex;justify-content:space-between;gap:16px;align-items:center}
+.user-card h3{margin:0 0 4px}
+@media(max-width:900px){.user-form-grid{grid-template-columns:1fr}.user-card{display:block}}
+
+/* Web 3.4 - Deploy checklist */
+.deploy-checklist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}
+.deploy-checklist label{background:#071d32;border:1px solid #24557e;border-radius:12px;padding:10px;color:#dbeafe;font-weight:700}
+.deploy-checklist input{margin-right:8px}
+@media(max-width:900px){.deploy-checklist{grid-template-columns:1fr}}
